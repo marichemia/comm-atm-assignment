@@ -1,0 +1,50 @@
+
+
+[
+  {
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Card": {
+        "CardNumber": "1234-5678-9012-3456",
+        "ExpDate": "12/03",
+        "CvcCode": "733",
+        "PinCode": "1234"
+      }
+    ,
+    "BalanceGEL": 500.00,
+    "BalanceUSD": 100.00,
+    "BalanceEUR": 50.00,
+    "TransactionHistory": [
+      {
+        "TransactionDate": "2024-01-01T08:20:45Z",
+        "TransactionType": "Deposit",
+        "AmountGEL": 200.00,
+        "AmountUSD": 0.00,
+        "AmountEUR": 0.00
+      }
+    ]
+  },
+  {
+    "FirstName": "Jane",
+    "LastName": "Smith",
+    "Card":{
+        "CardNumber": "1234-5678-9212-3456",
+        "ExpDate": "12/03",
+        "CvcCode": "753",
+        "PinCode": "4321"
+      }
+    ,
+    "BalanceGEL": 500.00,
+    "BalanceUSD": 100.00,
+    "BalanceEUR": 50.00,
+    "transactionHistory": [
+      {
+        "TransactionDate": "2024-01-03T15:45:00Z",
+        "TransactionType": "Withdrawal",
+        "AmountGEL": 0.00,
+        "AmountUSD": -100.00,
+        "AmountEUR": 0.00
+      }
+    ]
+  }
+]
