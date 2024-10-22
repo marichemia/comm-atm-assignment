@@ -52,9 +52,6 @@ namespace atm_app.Entities
             return this.Card.PinCode == pin;
         }
 
-        public void ChangePin(string newPin)
-        {
-            this.Card.PinCode = newPin;
-        }
+       
     }
 }
