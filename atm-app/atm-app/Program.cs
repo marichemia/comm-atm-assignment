@@ -7,5 +7,5 @@ List<User> users = User.LoadUsersFromJson("C:\\Users\\User\\Desktop\\comm-atm-as
 
 
 foreach (User user in users) {
-    Console.WriteLine(user);
+    Console.WriteLine(user.FirstName);
 }

@@ -26,15 +26,35 @@ namespace atm_app.Entities
             
             if (File.Exists(filePath))
             {
-                string jsonString = File.ReadAllText(filePath); 
-                List<User> users = JsonSerializer.Deserialize<List<User>>(jsonString); 
                 
-               foreach (User user in users)
-                {
-                    Console.WriteLine(user.FirstName);
-                }
+                string jsonString = File.ReadAllText(filePath);
+                
+                List<User> users = JsonSerializer.Deserialize<List<User>>(jsonString);
+
+ 
+                return users;
             }
             return new List<User>(); 
+        }
+
+        public static User ValidateCardInfo (List<User> users, string cardNumber, string expDate, string cvcCode) 
+        {
+
+            User user = users.FirstOrDefault( user =>
+                user.Card.CardNumber == cardNumber && user.Card.CvcCode == cvcCode && user.Card.ExpDate == expDate);
+
+            return user;
+
+        }
+
+        public bool ValidatePin (string pin)
+        {
+            return this.Card.PinCode == pin;
+        }
+
+        public void ChangePin(string newPin)
+        {
+            this.Card.PinCode = newPin;
         }
     }
 }
