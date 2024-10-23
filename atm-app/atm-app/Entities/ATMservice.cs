@@ -242,6 +242,8 @@ namespace atm_app.Entities
             string filePath = "C:\\Users\\User\\Desktop\\comm-atm-assignment\\atm-app\\atm-app\\Files\\users.json";
 
             string updatedJson = JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true });
+
+            File.WriteAllText(filePath, updatedJson);
         }
     
 
