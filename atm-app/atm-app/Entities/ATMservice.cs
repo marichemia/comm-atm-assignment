@@ -139,9 +139,22 @@ namespace atm_app.Entities
                     Console.WriteLine("Which currency are you exchanging into? GEL/USD/EUR");
                     var toCurrency = Console.ReadLine();
                     Console.WriteLine("Provide an amount to be exchanged:");
-                    var amount = decimal.Parse(Console.ReadLine());
+                    var input = Console.ReadLine();
+                    decimal amount;
 
-                    CurrencyExchange(fromCurrency, toCurrency, amount);
+
+                    if (decimal.TryParse(input, out amount))
+                    {
+
+                        CurrencyExchange(fromCurrency, toCurrency, amount);
+                    }
+                    else
+                    {
+
+                        Console.WriteLine("Invalid input. Please enter a valid decimal amount.");
+                    }
+
+                    
                 }
                 else if (menuItem == "0")
                 {
