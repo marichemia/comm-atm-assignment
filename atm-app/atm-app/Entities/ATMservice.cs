@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace atm_app.Entities
@@ -11,13 +12,16 @@ namespace atm_app.Entities
     {
 
         private User currentUser;
+        private List<User> users;
 
-        public ATMservice(User user)
+        //constructor
+        public ATMservice(User user, List<User> users)
         {
 
             this.currentUser = user;
-
+            this.users = users;
         }
+
 
         public void ShowMenu()
         {
@@ -37,15 +41,19 @@ namespace atm_app.Entities
 
                 if (menuItem == "1")
                 {
-                    //CheckBalance();
+                    CheckBalance();
                 }
                 else if (menuItem == "2")
                 {
-                    //WithdrawAmount();
+                    Console.WriteLine("Enter amount to withdraw:");
+                    int amount = int.Parse(Console.ReadLine());
+                    WithdrawAmount(amount);
                 }
                 else if (menuItem == "3")
                 {
-                    //DepositAmount();
+                    Console.WriteLine("Enter amount to deposit:");
+                    int amount = int.Parse(Console.ReadLine());
+                    //DepositAmount(amount);
                 }
                 else if (menuItem == "4")
                 {
@@ -65,7 +73,7 @@ namespace atm_app.Entities
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input. Please select a number corresponding to the menu item or 0 ");
+                    Console.WriteLine("Invalid input. Please select a number corresponding to the menu item or 0 to exit. ");
                 }
             }
         }
@@ -77,6 +85,17 @@ namespace atm_app.Entities
             Console.WriteLine($"{currentUser.BalanceUSD} USD");
             Console.WriteLine($"{currentUser.BalanceEUR} EUR");
 
+            var transaction = new Transaction
+            {
+                TransactionDate = DateTime.UtcNow.ToString("o"),
+                TransactionType = "Balance Inquiry",
+                AmountGEL = 0,
+                AmountUSD = 0,
+                AmountEUR = 0
+            };
+
+            LogTransaction(currentUser, transaction, users);
+
         }
 
         public void ChangePin()
@@ -85,11 +104,22 @@ namespace atm_app.Entities
             string newPin = Console.ReadLine();
             this.currentUser.Card.PinCode = newPin;
             Console.WriteLine("PIN updated successfully!");
+
+            var transaction = new Transaction
+            {
+                TransactionDate = DateTime.UtcNow.ToString("o"),
+                TransactionType = "PIN Change",
+                AmountGEL = 0,
+                AmountUSD = 0,
+                AmountEUR = 0
+            };
+
+            LogTransaction(currentUser, transaction, users);
         }
 
         public void WithdrawAmount(int amount)
 
-            //needs to be changed to make new balance and log transaction and save it to JSON.
+        //needs to be changed to make new balance and log transaction and save it to JSON.
         {
             Console.WriteLine("Choose currency:");
             Console.WriteLine("1. GEL");
@@ -97,42 +127,118 @@ namespace atm_app.Entities
             Console.WriteLine("3. EUR");
 
             var currency = Console.ReadLine();
-            int newBalance;
+            decimal newBalance = 0;
+
+            if (currency == "1" && amount <= currentUser.BalanceGEL)
+            {
+                currentUser.BalanceGEL = Convert.ToDecimal(currentUser.BalanceGEL) - amount;
+                newBalance = currentUser.BalanceGEL;
+                Console.WriteLine($"Balance: {newBalance} GEL");
+            }
+            else if (currency == "2" && amount <= currentUser.BalanceUSD)
+            {
+                currentUser.BalanceUSD = Convert.ToDecimal(currentUser.BalanceUSD) - amount;
+                newBalance = currentUser.BalanceUSD;
+                Console.WriteLine($"Balance: {newBalance} USD");
+            }
+            else if (currency == "3" && amount <= currentUser.BalanceEUR)
+            {
+                currentUser.BalanceEUR = Convert.ToDecimal(currentUser.BalanceEUR) - amount;
+                newBalance = currentUser.BalanceEUR;
+                Console.WriteLine($"Balance: {newBalance} EUR");
+            }
+            else
+            {
+               
+                Console.WriteLine("Please enter valid value.");
+                return;
+            }
+
+            var transaction = new Transaction
+            {
+                TransactionDate = DateTime.UtcNow.ToString("o"),
+                TransactionType = "Withdraw",
+                AmountGEL = currency == "1" ? amount : 0,
+                AmountUSD = currency == "2" ? amount : 0,
+                AmountEUR = currency == "3" ? amount : 0
+            };
+
+            LogTransaction(currentUser, transaction, users);
+
+
+        }
+
+        public void DepositAmount (int amount)
+        {
+            Console.WriteLine("Choose currency:");
+            Console.WriteLine("1. GEL");
+            Console.WriteLine("2. USD");
+            Console.WriteLine("3. EUR");
+
+            string currency = Console.ReadLine();
 
             if (currency == "1")
             {
-                newBalance = Convert.ToInt32(this.currentUser.BalanceGEL) - amount;
+                currentUser.BalanceGEL += amount;
+                Console.WriteLine($"New balance: {currentUser.BalanceGEL} GEL");
             }
             else if (currency == "2")
             {
-                newBalance = Convert.ToInt32(this.currentUser.BalanceUSD) - amount;
+                currentUser.BalanceUSD += amount;
+                Console.WriteLine($"New balance: {currentUser.BalanceUSD} USD");
             }
             else if (currency == "3")
             {
-                newBalance = Convert.ToInt32(this.currentUser.BalanceEUR) - amount;
-            } else
+                currentUser.BalanceEUR += amount;
+                Console.WriteLine($"New balance: {currentUser.BalanceEUR} EUR");
+            }
+            else
             {
-                // need to fix this
-                Console.WriteLine("Please enter valid value.");
-                newBalance = 0;
+                Console.WriteLine("Please enter a valid value.");
+                return;
             }
 
-            Console.WriteLine($"Balance: {newBalance}");
+            var transaction = new Transaction
+            {
+                TransactionDate = DateTime.UtcNow.ToString("o"),
+                TransactionType = "Deposit",
+                AmountGEL = currency == "1" ? amount : 0,
+                AmountUSD = currency == "2" ? amount : 0,
+                AmountEUR = currency == "3" ? amount : 0
+            };
+
+            LogTransaction(currentUser, transaction, users);
         }
 
-        //add amount method needs to be implemented
 
-        //show transaction history method needs to be implemented
-
-        private void CreateTransaction()
+        public void ShowTransactionHistory()
         {
-            //creates/logs transaction for any method
+            Console.WriteLine("Last 5 transactions:");
+
+            for (int i = 0; i < 5; i++)
+            {
+
+                Console.WriteLine($"{i + 1}. {currentUser.TransactionHistory[i]}");
+                Console.WriteLine("----------");
+
+
+            }
         }
 
-        private void SaveChanges()
+
+            private void LogTransaction(User user, Transaction transaction, List<User> users)
         {
-            //needs to be implemented
+            user.TransactionHistory.Add(transaction);
+            SaveChanges(users);
         }
+
+        private void SaveChanges(List<User> users)
+        {
+            string filePath = "C:\\Users\\User\\Desktop\\comm-atm-assignment\\atm-app\\atm-app\\Files\\users.json";
+
+            string updatedJson = JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true });
+        }
+    
 
 
     }
