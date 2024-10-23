@@ -8,9 +8,9 @@
       "CvcCode": "733",
       "PinCode": "1234"
     },
-    "BalanceGEL": 500.00,
-    "BalanceUSD": 100.00,
-    "BalanceEUR": 50.00,
+    "BalanceGEL": 448.00,
+    "BalanceUSD": 120.37,
+    "BalanceEUR": 50.34,
     "TransactionHistory": [
       {
         "TransactionDate": "2024-01-01T08:20:45Z",
@@ -25,6 +25,125 @@
         "AmountGEL": 0,
         "AmountUSD": 0,
         "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T16:03:31.5490426Z",
+        "TransactionType": "Balance Inquiry",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T16:04:10.5805360Z",
+        "TransactionType": "Withdraw",
+        "AmountGEL": 0,
+        "AmountUSD": 10,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T16:04:20.9981342Z",
+        "TransactionType": "Deposit",
+        "AmountGEL": 0,
+        "AmountUSD": 10,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T16:04:49.3844784Z",
+        "TransactionType": "PIN Change",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T16:36:58.6785771Z",
+        "TransactionType": "Balance Inquiry",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T16:37:07.3456348Z",
+        "TransactionType": "Withdraw",
+        "AmountGEL": 10,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T16:37:17.6276908Z",
+        "TransactionType": "Deposit",
+        "AmountGEL": 10,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T16:37:35.4296699Z",
+        "TransactionType": "PIN Change",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T17:55:23.3823455Z",
+        "TransactionType": "Balance Inquiry",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T17:55:39.2388328Z",
+        "TransactionType": "Withdraw",
+        "AmountGEL": 50,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T17:55:48.9413893Z",
+        "TransactionType": "Deposit",
+        "AmountGEL": 0,
+        "AmountUSD": 20,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T17:55:58.4898885Z",
+        "TransactionType": "PIN Change",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T17:56:13.8416023Z",
+        "TransactionType": "Currency Exchange",
+        "AmountGEL": 449.00,
+        "AmountUSD": 120.37,
+        "AmountEUR": 50.00
+      },
+      {
+        "TransactionDate": "2024-10-23T17:56:17.1231513Z",
+        "TransactionType": "Balance Inquiry",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T17:59:05.8874398Z",
+        "TransactionType": "PIN Change",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T18:11:34.9375865Z",
+        "TransactionType": "Currency Exchange",
+        "AmountGEL": 448.00,
+        "AmountUSD": 120.37,
+        "AmountEUR": 50.34
+      },
+      {
+        "TransactionDate": "2024-10-23T18:14:19.0141178Z",
+        "TransactionType": "Currency Exchange",
+        "AmountGEL": 448.00,
+        "AmountUSD": 120.37,
+        "AmountEUR": 50.34
       }
     ]
   },

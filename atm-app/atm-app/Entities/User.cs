@@ -37,23 +37,12 @@ namespace atm_app.Entities
             return new List<User>(); 
         }
 
-        public static User ValidateCardInfo (List<User> users, string cardNumber, string expDate, string cvcCode) 
+        public static User? ValidateCardInfo (List<User> users, string cardNumber, string expDate, string cvcCode) 
         {
 
             User user = users.FirstOrDefault( user =>
                 user.Card.CardNumber == cardNumber && user.Card.CvcCode == cvcCode && user.Card.ExpDate == expDate)!;
-
             
-                if (user == null)
-            {
-                Console.WriteLine("Invalid credentials. No user found.");
-            } else
-            {
-                Console.WriteLine("Please enter PIN.");
-                var pin = Console.ReadLine();
-
-                user.ValidatePin(pin);
-            }
 
             return user;
 
