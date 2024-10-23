@@ -41,7 +41,19 @@ namespace atm_app.Entities
         {
 
             User user = users.FirstOrDefault( user =>
-                user.Card.CardNumber == cardNumber && user.Card.CvcCode == cvcCode && user.Card.ExpDate == expDate);
+                user.Card.CardNumber == cardNumber && user.Card.CvcCode == cvcCode && user.Card.ExpDate == expDate)!;
+
+            
+                if (user == null)
+            {
+                Console.WriteLine("Invalid credentials. No user found.");
+            } else
+            {
+                Console.WriteLine("Please enter PIN.");
+                var pin = Console.ReadLine();
+
+                user.ValidatePin(pin);
+            }
 
             return user;
 

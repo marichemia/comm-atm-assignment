@@ -53,15 +53,15 @@ namespace atm_app.Entities
                 {
                     Console.WriteLine("Enter amount to deposit:");
                     int amount = int.Parse(Console.ReadLine());
-                    //DepositAmount(amount);
+                    DepositAmount(amount);
                 }
                 else if (menuItem == "4")
                 {
-                    //ShowTransactionHistory();
+                    ShowTransactionHistory();
                 }
                 else if (menuItem == "5")
                 {
-                    //ChangePin();
+                    ChangePin();
                 }
                 else if (menuItem == "6")
                 {
@@ -119,7 +119,6 @@ namespace atm_app.Entities
 
         public void WithdrawAmount(int amount)
 
-        //needs to be changed to make new balance and log transaction and save it to JSON.
         {
             Console.WriteLine("Choose currency:");
             Console.WriteLine("1. GEL");
@@ -215,10 +214,16 @@ namespace atm_app.Entities
         {
             Console.WriteLine("Last 5 transactions:");
 
-            for (int i = 0; i < 5; i++)
+            int historySize = currentUser.TransactionHistory.Count > 5 ? 5 : currentUser.TransactionHistory.Count;
+
+
+
+            for (int i = 0; i < historySize; i++)
             {
 
-                Console.WriteLine($"{i + 1}. {currentUser.TransactionHistory[i]}");
+                var transaction = currentUser.TransactionHistory[currentUser.TransactionHistory.Count - 1 - i];
+                Console.WriteLine($"{i + 1}. Date: {transaction.TransactionDate}, Type: {transaction.TransactionType}, " +
+                                  $"GEL: {transaction.AmountGEL}, USD: {transaction.AmountUSD}, EUR: {transaction.AmountEUR}");
                 Console.WriteLine("----------");
 
 
