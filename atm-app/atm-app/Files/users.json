@@ -3,14 +3,14 @@
     "FirstName": "John",
     "LastName": "Doe",
     "Card": {
-      "CardNumber": "1234-5678-9012-3456",
+      "CardNumber": "1234567890123456",
       "ExpDate": "12/03",
       "CvcCode": "733",
       "PinCode": "1234"
     },
-    "BalanceGEL": 448.00,
-    "BalanceUSD": 120.37,
-    "BalanceEUR": 50.34,
+    "BalanceGEL": 447.00,
+    "BalanceUSD": 120.74,
+    "BalanceEUR": 51.34,
     "TransactionHistory": [
       {
         "TransactionDate": "2024-01-01T08:20:45Z",
@@ -144,6 +144,41 @@
         "AmountGEL": 448.00,
         "AmountUSD": 120.37,
         "AmountEUR": 50.34
+      },
+      {
+        "TransactionDate": "2024-10-23T18:17:32.9871989Z",
+        "TransactionType": "Balance Inquiry",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T18:17:56.4029776Z",
+        "TransactionType": "Withdraw",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 2
+      },
+      {
+        "TransactionDate": "2024-10-23T18:18:08.2998377Z",
+        "TransactionType": "Deposit",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 3
+      },
+      {
+        "TransactionDate": "2024-10-23T18:18:28.2056578Z",
+        "TransactionType": "Currency Exchange",
+        "AmountGEL": 447.00,
+        "AmountUSD": 120.74,
+        "AmountEUR": 51.34
+      },
+      {
+        "TransactionDate": "2024-10-23T18:18:34.7094556Z",
+        "TransactionType": "Balance Inquiry",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
       }
     ]
   },
@@ -151,14 +186,50 @@
     "FirstName": "Jane",
     "LastName": "Smith",
     "Card": {
-      "CardNumber": "1234-5678-9212-3456",
+      "CardNumber": "1234567892123456",
       "ExpDate": "12/03",
       "CvcCode": "753",
-      "PinCode": "4321"
+      "PinCode": "5678"
     },
-    "BalanceGEL": 500.00,
-    "BalanceUSD": 100.00,
+    "BalanceGEL": 557.40,
+    "BalanceUSD": 90.00,
     "BalanceEUR": 50.00,
-    "TransactionHistory": null
+    "TransactionHistory": [
+      {
+        "TransactionDate": "2024-10-23T19:32:03.4238794Z",
+        "TransactionType": "Balance Inquiry",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T19:32:47.6325637Z",
+        "TransactionType": "Withdraw",
+        "AmountGEL": 20,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T19:33:04.6566747Z",
+        "TransactionType": "Deposit",
+        "AmountGEL": 50,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T19:33:28.5308741Z",
+        "TransactionType": "PIN Change",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T19:33:49.8413423Z",
+        "TransactionType": "Currency Exchange",
+        "AmountGEL": 557.40,
+        "AmountUSD": 90.00,
+        "AmountEUR": 50.00
+      }
+    ]
   }
 ]

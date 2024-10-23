@@ -11,13 +11,13 @@ namespace atm_app.Entities
     internal class User
     {
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public Card Card { get; set; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
+        public required Card Card { get; set; }
         public decimal BalanceGEL { get; set; }
         public decimal BalanceUSD { get; set; }
         public decimal BalanceEUR { get; set; }
-        public List<Transaction> TransactionHistory { get; set; }
+        public required List<Transaction> TransactionHistory { get; set; }
 
 
 
@@ -29,11 +29,20 @@ namespace atm_app.Entities
                 
                 string jsonString = File.ReadAllText(filePath);
                 
-                List<User> users = JsonSerializer.Deserialize<List<User>>(jsonString);
+                List<User> users = JsonSerializer.Deserialize<List<User>>(jsonString) ?? new List<User>() ?? new List<User>();
+
+                if (users == null || users.Count == 0)
+                {
+                    Console.WriteLine("User list not found.");
+                } else
+                {
+                    return users;
+                }
 
  
-                return users;
+                
             }
+
             return new List<User>(); 
         }
 

@@ -8,9 +8,9 @@ namespace atm_app.Entities
 {
     internal class Card
     {
-        public string CardNumber { get; set; }
-        public string ExpDate { get; set; }
-        public string CvcCode {  get; set; }
-        public string PinCode { get; set; }
+        public required string CardNumber { get; set; }
+        public required string ExpDate { get; set; }
+        public required string CvcCode {  get; set; }
+        public required string PinCode { get; set; }
     }
 }
