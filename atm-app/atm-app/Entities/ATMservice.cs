@@ -93,14 +93,36 @@ namespace atm_app.Entities
                 else if (menuItem == "2")
                 {
                     Console.WriteLine("Enter amount to withdraw:");
-                    int amount = int.Parse(Console.ReadLine());
-                    WithdrawAmount(amount);
+                    string input = Console.ReadLine();
+                    int amount;
+
+                    if (int.TryParse(input, out amount))
+                    {
+               
+                        WithdrawAmount(amount);
+                    }
+                    else
+                    {
+                        
+                        Console.WriteLine("Invalid input. Please enter a valid integer amount.");
+                    }
                 }
                 else if (menuItem == "3")
                 {
                     Console.WriteLine("Enter amount to deposit:");
-                    int amount = int.Parse(Console.ReadLine());
-                    DepositAmount(amount);
+                    string input = Console.ReadLine();
+                    int amount;
+
+                    if (int.TryParse(input, out amount))
+                    {
+
+                        DepositAmount(amount);
+                    }
+                    else
+                    {
+
+                        Console.WriteLine("Invalid input. Please enter a valid integer amount.");
+                    }
                 }
                 else if (menuItem == "4")
                 {
@@ -118,6 +140,7 @@ namespace atm_app.Entities
                     var toCurrency = Console.ReadLine();
                     Console.WriteLine("Provide an amount to be exchanged:");
                     var amount = decimal.Parse(Console.ReadLine());
+
                     CurrencyExchange(fromCurrency, toCurrency, amount);
                 }
                 else if (menuItem == "0")

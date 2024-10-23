@@ -8,7 +8,7 @@
       "CvcCode": "733",
       "PinCode": "1234"
     },
-    "BalanceGEL": 447.00,
+    "BalanceGEL": 450.00,
     "BalanceUSD": 120.74,
     "BalanceEUR": 51.34,
     "TransactionHistory": [
@@ -177,6 +177,34 @@
         "TransactionDate": "2024-10-23T18:18:34.7094556Z",
         "TransactionType": "Balance Inquiry",
         "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T19:43:03.2352114Z",
+        "TransactionType": "Balance Inquiry",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T19:46:11.2256093Z",
+        "TransactionType": "Withdraw",
+        "AmountGEL": 40,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T19:47:49.8248311Z",
+        "TransactionType": "Balance Inquiry",
+        "AmountGEL": 0,
+        "AmountUSD": 0,
+        "AmountEUR": 0
+      },
+      {
+        "TransactionDate": "2024-10-23T19:48:24.5358759Z",
+        "TransactionType": "Deposit",
+        "AmountGEL": 43,
         "AmountUSD": 0,
         "AmountEUR": 0
       }

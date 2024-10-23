@@ -26,21 +26,34 @@ namespace atm_app.Entities
             
             if (File.Exists(filePath))
             {
-                
-                string jsonString = File.ReadAllText(filePath);
-                
-                List<User> users = JsonSerializer.Deserialize<List<User>>(jsonString) ?? new List<User>() ?? new List<User>();
 
-                if (users == null || users.Count == 0)
+                try
                 {
-                    Console.WriteLine("User list not found.");
-                } else
-                {
+                    
+                    string jsonString = File.ReadAllText(filePath);
+
+                    
+                    List<User> users = JsonSerializer.Deserialize<List<User>>(jsonString) ?? new List<User>();
+
+                    
+                    if (users.Count == 0)
+                    {
+                        Console.WriteLine("No users found in the list.");
+                    }
+
                     return users;
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error loading users: {ex.Message}");
+                    return new List<User>();  
+                }
 
- 
-                
+
+            }
+            else
+            {
+                Console.WriteLine("File not found.");
             }
 
             return new List<User>(); 
